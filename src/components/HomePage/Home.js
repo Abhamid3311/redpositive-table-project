@@ -1,9 +1,10 @@
 import React from 'react';
+import Table from './Table';
 
 const Home = () => {
     return (
         <div>
-            <h2>Home</h2>
+            <Table />
         </div>
     );
 };
