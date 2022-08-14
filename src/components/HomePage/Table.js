@@ -1,6 +1,8 @@
 import React from 'react';
+import TableRow from './TableRow';
 
-const Table = () => {
+const Table = (props) => {
+    console.log(props.users);
     return (
         <div>
             <div class="overflow-x-auto w-full">
@@ -20,24 +22,16 @@ const Table = () => {
                             <th>Options</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <th>
-                                <label>
-                                    <input type="checkbox" class="checkbox" />
-                                </label>
-                            </th>
-                            <td>1</td>
-                            <td>Rohim</td>
-                            <td>01469546</td>
-                            <td>rohim@h.com</td>
-                            <td>reading</td>
-                            <td>
-                                <button class="btn btn-ghost btn-xs">Update</button>|
-                                <button class="btn btn-ghost btn-xs">delete</button>
-                            </td>
-                        </tr>
-                    </tbody>
+
+                    {
+                        props.users.map((user, index) => <tbody> <TableRow
+                            key={user._id}
+                            user={user}
+                            index={index}
+
+                        ></TableRow></tbody>)
+                    }
+
 
                 </table>
             </div>
