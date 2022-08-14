@@ -1,14 +1,15 @@
 import React from 'react';
+import Form from './Form';
 import TableRow from './TableRow';
 
 const Table = (props) => {
-    console.log(props.users);
     return (
         <div className='mt-24 px-10 mx-auto'>
             <div className='mb-3 flex justify-between items-center'>
                 <div >
-                    <button class="btn mr-3">Add New Entry</button>
-                    <button class="btn ">Send</button>
+                    <label for="pop-up-form" class="btn btn-outline btn-primary modal-button mr-3">Add New Entry</label>
+
+                    <button class="btn btn-outline btn-primary">Send</button>
                 </div>
                 <div>
                     <select class="select w-full select-primary max-w-xs">
@@ -17,6 +18,10 @@ const Table = (props) => {
                         <option value={"zToa"}>Z to A</option>
                     </select>
                 </div>
+            </div>
+
+            <div>
+                <Form></Form>
             </div>
 
 
