@@ -13,7 +13,7 @@ const Home = () => {
     return (
         <div>
             <h2 className='text-4xl text-neutral font-bold text-center pt-5'>Welcome To <span className='text-orange-700'>RedPositive</span> Table</h2>
-            <Table users={users} />
+            <Table users={users} setUsers={setUsers} />
         </div>
     );
 };

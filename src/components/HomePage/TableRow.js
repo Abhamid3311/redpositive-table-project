@@ -7,7 +7,7 @@ const TableRow = ({ user, index }) => {
         <tr>
             <th>
                 <label>
-                    <input type="checkbox" class="checkbox" />
+                    <input type="checkbox" className="checkbox" />
                 </label>
             </th>
             <td>{index + 1}</td>
@@ -16,8 +16,8 @@ const TableRow = ({ user, index }) => {
             <td>{email}</td>
             <td>{hobby}</td>
             <td>
-                <button class="btn btn-ghost btn-xs">Update</button>|
-                <button class="btn btn-ghost btn-xs">delete</button>
+                <button className="btn btn-ghost btn-xs">Update</button>|
+                <button className="btn btn-ghost btn-xs">delete</button>
             </td>
         </tr>
 

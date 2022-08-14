@@ -3,15 +3,18 @@ import { useForm } from "react-hook-form";
 
 const Form = () => {
     const { register, handleSubmit } = useForm();
-    const onSubmit = data => console.log(data);
+    const onSubmit = (data, e) => {
+        console.log(data);
+        e.target.reset();
+    };
 
     return (
         <div>
-            <input type="checkbox" id="pop-up-form" class="modal-toggle" />
-            <div class="modal modal-bottom sm:modal-middle">
-                <div class="modal-box">
+            <input type="checkbox" id="pop-up-form" className="modal-toggle" />
+            <div className="modal modal-bottom sm:modal-middle">
+                <div className="modal-box">
 
-                    <form onSubmit={handleSubmit(onSubmit)}>
+                    <form id='myForm' onSubmit={handleSubmit(onSubmit)}>
                         <input
                             className='input input-bordered input-primary w-full max-w-xs mb-3'
                             placeholder='name'
@@ -28,23 +31,21 @@ const Form = () => {
                             className='input input-bordered input-primary w-full max-w-xs mb-3'
                             placeholder='phone number'
                             type="number"
-                            {...register("number")} />
+                            {...register("number", { required: true })} />
 
                         <input
                             className='input input-bordered input-primary w-full max-w-xs mb-3'
                             placeholder='hobby'
                             type={"text"}
-                            {...register("name", { required: true, maxLength: 30 })} />
+                            {...register("hobby", { required: true, maxLength: 30 })} />
                         <br />
 
-                        <input className='btn btn-primary w-full max-w-xs' type="submit" />
+                        <button className='btn btn-primary w-full max-w-xs' type="submit">Save</button>
                     </form>
 
-                    <div class="modal-action">
-                        <label for="pop-up-form" class="btn btn-primary btn-outline">X</label>
+                    <div className="modal-action">
+                        <label htmlFor="pop-up-form" className="btn btn-primary btn-outline">X</label>
                     </div>
-
-
                 </div>
             </div>
         </div>
