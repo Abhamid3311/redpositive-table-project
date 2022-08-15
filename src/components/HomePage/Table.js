@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import Form from './Form';
 import TableRow from './TableRow';
+import { toast } from 'react-toastify';
 
-const Table = ({ users, setUsers }) => {
-
-
+const Table = ({ users, setUsers, handleDeleteBtn }) => {
     const [sortType, setSortType] = useState('');
+
     //Sort Products By price
     useEffect(() => {
         if (sortType === 'aToz') {
@@ -18,9 +18,29 @@ const Table = ({ users, setUsers }) => {
     }, [users, setUsers, sortType]);
 
 
+    //Handle Form Data Entry
+
+    const handleFormData = (data) => {
+        //Data Send to Server
+        const url = 'http://localhost:5000/users';
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+            .then(res => res.json())
+            .then(result => {
+                const newEntry = [...users, result];
+                setUsers(newEntry);
+                toast.success("Saved SuccessFully!")
+            })
+    };
+
 
     return (
-        <div className='mt-24 px-10 mx-auto'>
+        <div className='mt-24 px-16 mx-auto'>
             <div className='mb-3 flex justify-between items-center'>
                 <div >
                     <label htmlFor="pop-up-form" className="btn btn-outline btn-primary modal-button mr-3">Add New Entry</label>
@@ -29,7 +49,7 @@ const Table = ({ users, setUsers }) => {
                 </div>
                 <div>
                     <select className="select w-full select-primary max-w-xs" onChange={(e) => setSortType(e.target.value)}>
-                        <option disabled defaultValue>sort by</option>
+                        <option disabled selected>sort by</option>
                         <option value={"aToz"}>A to Z</option>
                         <option value={"zToa"}>Z to A</option>
                     </select>
@@ -37,10 +57,10 @@ const Table = ({ users, setUsers }) => {
             </div>
 
             <div>
-                <Form></Form>
+                <Form onFormData={handleFormData}></Form>
             </div>
 
-
+            {/* Table */}
             <div className="overflow-x-auto w-full">
                 <table className="table w-full">
                     <thead >
@@ -59,11 +79,11 @@ const Table = ({ users, setUsers }) => {
                         </tr>
                     </thead>
                     {
-                        users.map((user, index) => <tbody> <TableRow
+                        users.map((user, index) => <tbody><TableRow
                             key={user._id}
                             user={user}
                             index={index}
-
+                            handleDeleteBtn={handleDeleteBtn}
                         ></TableRow></tbody>)
                     }
                 </table>

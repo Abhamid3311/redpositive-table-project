@@ -1,10 +1,13 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
 
-const Form = () => {
+const Form = ({ onFormData }) => {
     const { register, handleSubmit } = useForm();
+
     const onSubmit = (data, e) => {
-        console.log(data);
+        onFormData(data);
+
+        //Reset Form
         e.target.reset();
     };
 
