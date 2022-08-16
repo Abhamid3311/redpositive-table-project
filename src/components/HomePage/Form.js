@@ -22,7 +22,7 @@ const Form = ({ onFormData }) => {
                             className='input input-bordered input-primary w-full max-w-xs mb-3'
                             placeholder='name'
                             type={"text"}
-                            {...register("name", { required: true, maxLength: 15 })} />
+                            {...register("name", { required: true })} />
 
                         <input
                             className='input input-bordered input-primary w-full max-w-xs mb-3'

@@ -16,8 +16,8 @@ const TableRow = ({ user, index, handleDeleteBtn }) => {
             <td>{email}</td>
             <td>{hobby}</td>
             <td>
-                <button className="btn btn-outline btn-ghost btn-xs mr-2">Update</button>
-                <button onClick={() => handleDeleteBtn(_id)} className="btn btn-outline btn-ghost btn-xs">delete</button>
+                <button className="btn btn-outline btn-primary btn-xs mr-2">Update</button>
+                <button onClick={() => handleDeleteBtn(_id)} className="btn btn-outline btn-error btn-xs">delete</button>
             </td>
         </tr>
 

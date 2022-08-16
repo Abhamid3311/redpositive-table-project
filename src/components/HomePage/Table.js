@@ -22,7 +22,7 @@ const Table = ({ users, setUsers, handleDeleteBtn }) => {
 
     const handleFormData = (data) => {
         //Data Send to Server
-        const url = 'http://localhost:5000/users';
+        const url = ' https://immense-meadow-01129.herokuapp.com/users';
         fetch(url, {
             method: 'POST',
             headers: {

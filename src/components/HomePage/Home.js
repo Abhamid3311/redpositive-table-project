@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 const Home = () => {
     const [users, setUsers] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/users')
+        fetch(' https://immense-meadow-01129.herokuapp.com/users')
             .then(res => res.json())
             .then(data => setUsers(data))
     }, []);
@@ -16,7 +16,7 @@ const Home = () => {
 
         const procced = window.confirm('You want to delete?');
         if (procced) {
-            const url = `http://localhost:5000/users/${id}`;
+            const url = ` https://immense-meadow-01129.herokuapp.com/users/${id}`;
             console.log(url);
 
             fetch(url, {
@@ -35,7 +35,7 @@ const Home = () => {
 
 
 
-        /* fetch(`http://localhost:5000/users/${id}`, {
+        /* fetch(` https://immense-meadow-01129.herokuapp.com/users/${id}`, {
            method: "DELETE"
        })
            .then(res => res.json())
